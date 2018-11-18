@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>涟漪按钮</title>
+</head>
+<style>
+    .btnBox{
+        position: relative;
+    }
+    .jiangBtn{
+        height: 36px;
+        padding: 0 16px;
+        border: 0px;
+        border-radius: 2px;
+        transition: 0.3s;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+
+    }
+    .jiangBtn:hover{
+        background:#e5e5e5
+    }
+    .jiangBtn:focus{
+        outline: none;
+        background: #e5e5e5; /* tab键选中有效果 */
+    }
+    .jiangBtn .circle{
+        width: 1px;
+        height: 1px;
+        border-radius: 50%;
+        background: #ccc;
+        position: absolute;
+        transition: transform 0.5s;
+        visibility: hidden;
+         pointer-events: none;/*不会被点击 */
+        z-index: -1;
+    }
+    .jiangBtn .active {
+        transform: scale(70);
+        visibility: visible;
+    }
+</style>
+<body>
+    <button class='jiangBtn'>按钮
+        <div class='circle'></div>
+    </button>
+    <script>
+        var oBtn = document.getElementsByClassName('jiangBtn')[0]
+        oBtn.onclick = function(e){
+            var x = e.clientX
+            var y= e.clientY
+            var oBtnLeft = oBtn.offsetLeft
+            var oBtnTop = oBtn.offsetTop
+
+            var startPointX = x-oBtnLeft;
+            var startPointY = y-oBtnTop;
+            
+            var oCircle = oBtn.querySelector('.circle')
+            oCircle.style.left = startPointX+'px'
+            oCircle.style.top = startPointY+'px'
+
+            oCircle.classList.add('active')
+            oCircle.addEventListener('webkitTransitionEnd',function(){
+            this.classList.remove('active')
+            })
+        }
+       
+       
+    </script>
+</body>
+</html>

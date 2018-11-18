@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="http://www.baidu.com/favicon.ico" type="image/x-icon">
+    <title>百度一下，你就知道</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    *{box-sizing:border-box;}
+    a{text-decoration: none;color: inherit;}
+    ::before,::after{box-sizing:border-box;}
+    ul,li{list-style:none;}
+    .icon {width: 1em;height: 1em;vertical-align:-0.15em;fill:currentColor;overflow: hidden;}
+    button{border: 0;}
+
+    body{
+      min-height: 100vh;
+      /* border:1px solid red; */
+      display: flex;/* 不用清除浮动了 */
+      justify-content:center;
+      align-items:center;
+    }
+    .wrapper{
+        display: flex;
+        position: relative;
+     /*  border:1px solid green; */
+    }
+    .inputWrapper{
+      position: relative;
+      display:inline-block;/* 没想到吧 */
+      
+    }
+    .floatDiv{
+      position: absolute;
+      /* border:1px solid red; */
+      right: 0;
+      top: 0;
+    }
+    .suggestion{
+        position: absolute;
+        top:calc(100% - 1px);
+        background: #fff;
+        border: 1px solid rgb(204,204,204);
+        width: 540px;
+       display: none;
+    }
+    .suggestion li{
+        padding: 4px 0 4px 8px;
+
+    }
+    .suggestion li span{
+        font-weight: bold;
+
+    }
+    .suggestion li:hover{
+        background: rgb(240,240,240);
+    }
+    .active{
+        display:block;
+    }
+    
+    .inputWrapper{float: left;}
+    .inputWrapper button{float: left;}
+    
+    .inputWrapper input[type=text]{
+      border:1px solid #b8b8b8;
+      width: 540px;
+      height: 35px;
+      padding-left: 8px;
+      line-height: 35px;;
+    }
+    
+    .inputWrapper input[type=text]:focus{
+      outline:none;
+      border-color:#4b94fc;
+    }
+    .floatDiv{
+        height: 100%;
+        display: flex;
+      justify-content:center;
+      align-items:center;
+      padding: 0 10px;
+    }
+    .floatDiv svg{
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        color: #b8b8b8;
+    }
+    .floatDiv svg:hover{
+        fill:#4b94fc;
+    }
+    .floatDiv .spiltLine{
+        width: 0px;
+        height: 16px;
+        border-left: 1px solid #b8b8b8;
+        margin: 0 12px;
+       
+    }
+    .wrapper > button{
+        background: #4b94fc;
+        color: white;
+        padding: 0 20px;
+        font-size: 15px;
+        cursor: pointer;
+        
+        /* button默认字体居中 */
+    }
+    .wrapper > button：focus{
+        outline: none;
+    }
+    .wrapper > button:hover{
+        background:rgb(49,126,243);
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+        border-bottom:1px solid #2868c8;
+    }
+    
+  </style>
+    <script src='//at.alicdn.com/t/font_923054_96og4olvk64.js'></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <span class='inputWrapper'>
+            <input id='keyword' type="text" autocomplete="off">
+            <span class="floatDiv">
+                <svg class='icon'>
+                    <use xlink:href='#icon-micphone'></use>
+                </svg>
+                <span class="spiltLine"></span>
+                <svg class='icon'>
+                    <use xlink:href='#icon-camera'></use>
+                </svg>
+            </span>
+        </span>
+        <button>百度一下</button>
+        <ul class='suggestion'>
+            <li><a href="#">1111111</a></li>
+            <li><a href="#"><span>222</span>是什么</a></li>
+            <li><a href="#">333333</a></li>
+            <li><a href="#">4444444</a></li>
+            <li><a href="#">5555555</a></li>
+            <li><a href="#">66666666</a></li>
+        </ul>
+    </div>
+<script>
+window.onload = function(){
+        var oSuggestion = document.getElementsByClassName('suggestion')[0]
+keyword.oninput = function(){
+    if(keyword.value){
+        oSuggestion.className='suggestion active';
+    }else{
+        oSuggestion.className='suggestion';
+    }
+    
+}
+}
+</script>
+</body>
+
+</html>
