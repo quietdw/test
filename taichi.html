@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>太极</title>
+  <style>
+    .taichi{
+      width: 96px;
+      height: 48px;
+      margin:0 auto;
+      box-sizing:content-box;
+      background: #fff;
+      border:2px solid #000;
+      border-width: 2px 2px 50px 2px;
+      border-radius:100%;
+      position: relative;
+    }
+    .taichi::before{
+      content:"";
+      position: absolute;
+      left: 0px;
+      top:25px;
+      width: 12px;
+      height: 12px;
+      border: 18px solid #000;
+      border-radius:100%;
+      background: #fff;
+    }
+    .taichi::after{
+      content:"";
+      position: absolute;
+      left: 48px;
+      top: 24px;
+      width: 12px;
+      height: 12px;
+      border: 18px solid #fff;
+      border-radius:100%;
+      background: #000;
+    }
+
+  </style>
+</head>
+<body>
+<div class="taichi"></div>
+</body>
+</html>
