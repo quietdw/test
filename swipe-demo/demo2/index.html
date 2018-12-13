@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播</title>
+    <style>
+    
+    .container {
+       display: flex;
+       justify-content: center;;
+    }
+
+    .window {
+        display: flex;
+        border: 1px solid #000;;
+        width: 1048px;
+        height: 462px;
+        overflow: hidden;
+    }
+
+    .images {
+        position: relative;
+        width: 100%;
+        
+    }
+
+    .images>img{
+        position: absolute;
+        transition: all 1s;
+    }
+
+    .images>img.leave{
+        left: -100%;
+        z-index: 1;
+    }
+
+    .images>img.current{    
+        left: 0;
+        z-index: 1;
+    }
+
+    .images>img.enter{
+        left: 100%;
+        
+    }
+
+    .buttonList {
+       text-align: center;
+       padding: 10px 0;
+    }
+
+    .buttonList span {
+        background: #fff;
+        color: black;
+        padding: 0 5px;
+        border: #000 solid 1px;
+        cursor: pointer;
+
+    }
+
+    .buttonList span.active {
+        background: #000;
+        color: #fff;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="innerContainer">
+            <div class="window">
+                <div class="images">
+                    <img src="img/1.jpg" alt="" class='current'>
+                    <img src="img/2.jpg" alt="" class="enter">
+                    <img src="img/3.jpg" alt="" class="enter">
+                    <img src="img/4.jpg" alt="" class="enter">
+                    <img src="img/5.jpg" alt="" class="enter"> 
+                </div>
+            </div>
+            <!-- <div class="buttonList">
+                <span class='active'>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div> -->
+        </div>
+    </div>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
