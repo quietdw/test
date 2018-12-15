@@ -50,9 +50,10 @@
         $('.container').on('click',function(e){
             e.stopPropagation()
         })
+
         $('#btn').on('click',function(){
             
-            $('#article').addClass('active')
+            $('#article').toggleClass('active')
 
             setTimeout(function(){
                 $(document).one('click',function(){
@@ -62,7 +63,6 @@
             },0)
         })
 
-        
     </script>
 </body>
 </html>
