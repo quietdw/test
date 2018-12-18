@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSONP-demo</title>
+</head>
+
+<body>
+    <p>你还有<span id=money>$$money$$</span>块钱</p>
+    <button id=btn>扣1块钱</button>
+    <script>
+        btn.addEventListener('click', function () {
+            func = 'func' + parseInt(Math.random() * 10000, 10)
+
+            window[func] = function (respones) {
+                if (respones.success) {
+                    money.innerText = respones.money
+                }
+            }
+            var script = document.createElement('script')
+            script.src = 'http://jack.com:8888/pay?callback=' + func
+            document.body.appendChild(script)
+            script.onload = function (e) {
+                e.currentTarget.remove()
+                delete window[func]
+                console.log(window[func])
+            }
+            script.onerror = function (e) {
+                e.currentTarget.remove()
+                alert('fail')
+                delete window[func]
+            }
+        })
+    </script>
+</body>
+
+</html>
