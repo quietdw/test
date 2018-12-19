@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <p>点击了<span id=nnn>$$n$$</span>次</p>
+    <button id=btn>点我啊</button>
+    <script>
+        function ajax(option) {
+            return new Promise(function (resolve,reject) {
+                let url = option.url
+                let method = option.method
+                let body = option.body
+                let success = option.success
+                let fail = option.success
+
+                var httpRquest = new XMLHttpRequest()
+                httpRquest.open(method, url)
+                httpRquest.onreadystatechange = function () {
+                    if (httpRquest.readyState === 4 && httpRquest.status === 200) {
+                        resolve.call(undefined, httpRquest.responseText)
+                    } else if (httpRquest.readyState === 4 && httpRquest.status === 404) {
+                        reject.call(undefined, httpRquest.response)
+                    }
+                }
+                httpRquest.send(body)
+            })
+        }
+
+
+        function success(response) {
+            response = window.JSON.parse(response)
+            nnn.innerText = response.count
+        }
+
+        function fail(response) {
+            console(response)
+        }
+
+        btn.addEventListener('click', () => {
+            ajax({
+                url: 'http://127.0.0.1:8010/count',
+                method: 'get',
+                body: 'null',
+            }).then(success,fail)
+        })
+
+
+    </script>
+</body>
+
+</html>
