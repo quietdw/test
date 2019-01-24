@@ -25,6 +25,8 @@
 
 [文本垂直居中](https://jiangnana.fun/test/文字垂直居中.html)
 
+[涟漪按钮](https://jiangnana.fun/test/涟漪按钮.html)
+
 [单行超出省略号](https://jiangnana.fun/test/省略号.html)
 
 
