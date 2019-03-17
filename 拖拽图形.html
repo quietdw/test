@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        #drag{
+            width: 100px;
+            height: 100px;
+            background: #000;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id='drag' style='left: 10px;top: 10px;'></div>
+</body>
+<script>
+    let circle = document.getElementById('drag')
+    let moved = false
+    let coordinate = {x:'',y:''}
+    let delta = {x:'',y:''}
+    let speed = 1
+
+    circle.addEventListener('mousedown',(e)=>{
+        moved = true
+        coordinate.x = e.clientX
+        coordinate.y = e.clientY
+    })   
+
+    document.addEventListener('mousemove',(e)=>{
+        if(moved){
+            delta.x = e.clientX - coordinate.x
+            delta.y = e.clientY - coordinate.y
+            circle.style.left = parseInt(circle.style.left,10) + delta.x  +'px'
+            circle.style.top = parseInt(circle.style.top,10) + delta.y + 'px'
+            coordinate.x = e.clientX
+            coordinate.y = e.clientY
+        }
+    })  
+
+    document.addEventListener('mouseup',(e)=>{
+        moved = false
+    })  
+</script>
+</html>
