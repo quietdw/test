@@ -28,4 +28,6 @@
 
 [单行超出省略号](https://jiangnana.fun/test/省略号.html)
 
+[拖拽demo](https://jiangnana.fun/test/拖拽图形.html)
+
 
