@@ -30,4 +30,13 @@
 
 [拖拽demo](https://jiangnana.fun/test/拖拽图形.html)
 
+[千分符]
+
+```javascript
+const micrometerLevel = (value) => {
+  const [i, d] = value.toString().split('.')
+  return i.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') + (d ? `.${d}` : '')
+}
+```
+
 
